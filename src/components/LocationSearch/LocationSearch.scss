@@ -1,0 +1,22 @@
+.location-search {
+	position: relative;
+	display: inline-block;
+	margin: 24px 0;
+	width: 40%;
+
+	.suggestion-dropdown {
+		z-index: 5;
+		margin-top: 2px;
+		background-color: white;
+		position: absolute;
+		display: block;
+		width: 100%;
+	}
+}
+
+// Mobile Format
+@media only screen and (max-width: 960px) {
+	.location-search {
+		width: 80%;
+	}
+}

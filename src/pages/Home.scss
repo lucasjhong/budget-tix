@@ -1,0 +1,28 @@
+.home-page {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 10vh;
+
+	.MuiBox-root {
+		width: 40%;
+		margin: 36px 0;
+	}
+
+	img {
+		height: 30px;
+		width: 60 px;
+	}
+}
+
+// Mobile Format
+@media only screen and (max-width: 960px) {
+	.home-page {
+		.MuiBox-root {
+			width: 80%;
+			margin: 36px 0;
+		}
+	}
+}
