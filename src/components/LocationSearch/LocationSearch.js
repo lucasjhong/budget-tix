@@ -6,7 +6,7 @@ import { IconButton, InputBase, MenuItem, Paper } from '@mui/material';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import './LocationSearch.scss';
 
-const LocationSearch = ({ setCoordinates }) => {
+const LocationSearch = ({ setCoordinates, setSearchCity }) => {
 	const [address, setAddress] = useState();
 	const searchInput = useRef(null);
 
@@ -16,14 +16,22 @@ const LocationSearch = ({ setCoordinates }) => {
 
 	const handleSelect = async (address) => {
 		const results = await geocodeByAddress(address);
-		const ll = await getLatLng(results[0]);
+		// const ll = await getLatLng(results[0]);
+		const cityName = results[0].address_components[0].long_name;
 		setAddress(address);
-		setCoordinates(ll);
+		setSearchCity(cityName);
+		// setCoordinates(ll);
 	};
 
 	return (
 		<div className='location-search'>
-			<PlacesAutocomplete value={address} onChange={handleChange} onSelect={handleSelect}>
+			<PlacesAutocomplete
+				value={address}
+				onChange={handleChange}
+				onSelect={handleSelect}
+				searchOptions={{ types: ['(cities)'] }}
+				highlightFirstSuggestion
+			>
 				{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
 					<div>
 						<Paper

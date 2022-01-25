@@ -10,6 +10,7 @@ const TicketListings = ({ eventsList, loading }) => {
 	const handleChange = (event, value) => {
 		setPage(value);
 	};
+
 	return (
 		<div className='ticket-listings'>
 			<div className='listings-section'>
@@ -23,7 +24,7 @@ const TicketListings = ({ eventsList, loading }) => {
 				</div>
 			</div>
 			<Pagination
-				count={eventsList.length / pageItemCount}
+				count={Math.floor(eventsList.length / pageItemCount)}
 				page={page}
 				color='primary'
 				onChange={handleChange}
